@@ -18,7 +18,7 @@ final class Module_ActivationAlert extends GDO_Module
 	public function getConfig()
 	{
 		return array(
-			GDT_Email::make('activation_alert_mail_receiver'),
+			GDT_Email::make('activation_alert_mail_receiver')->initial(GWF_ADMIN_EMAIL),
 		);
 	}
 	
@@ -61,9 +61,9 @@ final class Module_ActivationAlert extends GDO_Module
 		$mail = Mail::botMail();
 		$mail->setSubject(tusr($admin, 'mail_subj_user_activated_staff', [sitename()]));
 		$tVars = array(
-			$admin->displayName(),
+			$admin->displayNameLabel(),
 			sitename(),
-			$user->displayName(),
+			$user->displayNameLabel(),
 			GDT_IP::current(),
 		);
 		$mail->setBody(tusr($admin, 'mail_body_user_activated_staff', $tVars));
