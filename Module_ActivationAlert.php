@@ -18,7 +18,7 @@ final class Module_ActivationAlert extends GDO_Module
 	public function getConfig()
 	{
 		return array(
-			GDT_Email::make('activation_alert_mail_receiver')->initial(GWF_ADMIN_EMAIL),
+			GDT_Email::make('activation_alert_mail_receiver')->initial(GDO_ADMIN_EMAIL),
 		);
 	}
 	
@@ -50,7 +50,7 @@ final class Module_ActivationAlert extends GDO_Module
 	private function sendSingleMail($to, GDO_User $user)
 	{
 		$fakeUser = GDO_User::blank(array(
-			'user_name' => GWF_BOT_NAME,
+			'user_name' => GDO_BOT_NAME,
 			'user_email' => $to,
 		));
 		$this->sendMail($fakeUser, $user);
