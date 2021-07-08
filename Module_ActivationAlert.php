@@ -6,6 +6,7 @@ use GDO\User\GDO_User;
 use GDO\Mail\Mail;
 use GDO\Net\GDT_IP;
 use GDO\Mail\GDT_Email;
+use GDO\Register\GDO_UserActivation;
 
 /**
  * Sends a mail when a new user is activated.
@@ -27,7 +28,7 @@ final class Module_ActivationAlert extends GDO_Module
 	############
 	### Hook ###
 	############
-	public function hookUserActivated(GDO_User $user)
+	public function hookUserActivated(GDO_User $user, GDO_UserActivation $activation=null)
 	{
 		$this->sendMails($user);
 	}
